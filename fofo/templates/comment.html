@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+{% include 'search.html'%}
+
+<div style="text-align:center;">
+    {% for com in comns.comments.all %}
+    {{com.name}}
+    <br/>
+    {{com.body}}
+    <br/>
+    {{com.date_added}}
+    <br/>
+    <hr/>
+
+    {% endfor %}
+</div>
+
+
+{% endblock %}

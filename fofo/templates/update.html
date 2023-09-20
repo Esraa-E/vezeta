@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block content %}
+{% include 'search.html'%}
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        {% for field in form %}
+            <div class="form-group">
+               {{field.label_tag}}
+               {% render_field field class="form-control" %} 
+            </div>
+        {% endfor %}
+        <input type="submit" value="تحديث" class="boxed-btn3 mx-4"/>
+    </div>
+</form>
+
+
+{% endblock %}

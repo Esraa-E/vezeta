@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'search.html'%}
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item font-weight-bold" >
+            <a href="{% url 'sun' %}">
+                Doctors
+            </a>
+            </li>
+        <li class="breadcrumb-item font-weight-bold active">{{reserv.name}}</li>
+
+
+    </ol>
+
+</div>
+<table class="table table-bordered table-hover text-center">
+    <thead class="thead-light">
+        <tr>
+            <td class="bordered">الاسم</td>
+            <td>التاريخ</td>
+            <td>الدفع</td>
+            <td>تحديث</td>
+            <td>حذف</td>
+        </tr>
+    </thead>
+    {% for res in reserv.docc.all %}
+    <tr>
+        <td>{{res.name}}</td>
+        <td>{{res.date}}</td>
+        <td>{{res.crated}}</td>
+        <td>
+            <a href="{% url 'update' res.pk %}" class="boxed-btn3">تحديث</a>   
+       
+        </td>
+        <td>
+            <a href="{% url 'delete' res.pk %}" class="boxed-btn3">حذف</a>   
+       
+        </td>
+       
+    </tr> 
+    {% endfor %}
+
+</table>
+<a class="boxed-btn3 mx-2" href="{% url 'book' reserv.pk %}">اضافه كشف</a>
+{% endblock %}
